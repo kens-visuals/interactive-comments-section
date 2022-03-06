@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 // components
 import Comment from 'components/Comment/Comment.index';
+import Input from 'components/Input/Input.index';
 
 // styles
 import * as C from './Comments.styles';
@@ -16,7 +17,12 @@ const Comments = () => {
     <Comment key={comment.id} {...comment} />
   ));
 
-  return <C.Comments>{commentsDisplay}</C.Comments>;
+  return (
+    <C.Comments>
+      {commentsDisplay}
+      <Input />
+    </C.Comments>
+  );
 };
 
 export default Comments;

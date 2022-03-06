@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import color from 'styles/variables.styles';
 
-export const Comment = styled.div`
+export const Container = styled.div`
   width: 100%;
   background-color: ${color.primary};
   border-radius: 0.8rem;
@@ -15,7 +15,7 @@ export const Comment = styled.div`
     padding: 2.5rem;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto 1fr;
-    gap: 1.8rem 2rem;
+    gap: ${(props) => (props.isInput ? '0 2rem' : '1.8rem 2rem')};
   }
 `;
 
@@ -44,6 +44,15 @@ export const Username = styled.span`
   font-weight: 800;
 `;
 
+export const You = styled.span`
+  color: ${color.primary};
+  background-color: ${color.violet};
+  border-radius: 0.2rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 0.2rem 0.8rem;
+`;
+
 export const PostedDate = styled.span`
   color: ${color.secondary};
   font-weight: 500;
@@ -61,6 +70,11 @@ export const Text = styled.p`
     margin-bottom: 0;
     grid-column: 2 / -1;
   }
+`;
+
+export const Mention = styled.span`
+  color: ${color.violet};
+  font-weight: 800;
 `;
 
 export const ButtonBox = styled.div`
@@ -104,6 +118,11 @@ export const ReplyButton = styled(Button)`
   color: ${color.violet};
   gap: 0.8rem;
   justify-self: end;
+  transition: all 0.3s;
+
+  &:hover {
+    opacity: 0.5;
+  }
 
   @media (min-width: 810px) {
     grid-column: 3 / -1;
