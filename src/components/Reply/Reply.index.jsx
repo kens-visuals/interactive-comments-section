@@ -17,7 +17,7 @@ const Reply = (reply) => (
       <C.PostedDate>{reply.createdAt}</C.PostedDate>
     </C.CommentWrapper>
     <C.Text>
-      <C.ButtonSpan>@{reply.replyingTo}</C.ButtonSpan> {reply.content}
+      <C.ButtonSpan reply>@{reply.replyingTo}</C.ButtonSpan> {reply.content}
     </C.Text>
     <C.ButtonBox>
       <C.Button>
@@ -36,7 +36,7 @@ const Reply = (reply) => (
         </C.ReplyButton>
         <C.ReplyButton>
           <C.ButtonIcon src={iconEdit} alt="reply" reply />
-          <C.ButtonSpan reply>Reply</C.ButtonSpan>
+          <C.ButtonSpan reply>Edit</C.ButtonSpan>
         </C.ReplyButton>
       </C.ButtonWrapper>
     ) : (

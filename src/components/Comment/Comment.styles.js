@@ -12,10 +12,10 @@ export const Container = styled.div`
   grid-template-rows: auto 1fr auto;
 
   @media (min-width: 810px) {
-    padding: 2.5rem;
+    padding: 2.5rem 2rem;
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto 1fr;
-    gap: ${(props) => (props.isInput ? '0 2rem' : '1.8rem 2rem')};
+    gap: ${(props) => (props.isInput ? '0 2rem' : '.5rem 2rem')};
   }
 `;
 

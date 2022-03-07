@@ -10,6 +10,10 @@ import * as C from './Comments.styles';
 // assests
 import DATA from 'assets/data.json';
 
+// components
+import Replies from '../Replies/Replies.index';
+import Reply from '../Reply/Reply.index';
+
 const Comments = () => {
   const [comments, setComments] = useState(DATA.comments);
   const [newComment, setNewComment] = useState('');
@@ -43,8 +47,6 @@ const Comments = () => {
 
     setNewComment('');
   };
-
-  console.log(comments);
 
   return (
     <C.Comments>

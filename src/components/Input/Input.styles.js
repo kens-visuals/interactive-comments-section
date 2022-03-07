@@ -39,12 +39,16 @@ export const SendButton = styled.button`
   border-radius: 0.5rem;
   text-transform: uppercase;
   padding: 1rem;
-  transition: all 0.4s;
+  transition: background-color 0.4s;
   justify-self: end;
 
   &:hover {
     cursor: pointer;
     background-color: ${color.violetLight};
+  }
+
+  &:focus-visible {
+    outline: 0.2rem solid ${color.red};
   }
 
   @media (min-width: 810px) {

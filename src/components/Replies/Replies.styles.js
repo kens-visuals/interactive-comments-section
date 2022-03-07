@@ -14,7 +14,7 @@ export const Replies = styled.div`
   }
 
   @media (min-width: 810px) {
-    padding: 0 5rem;
-    margin-left: 5rem;
+    padding: 0 4rem;
+    margin-left: 4rem;
   }
 `;
