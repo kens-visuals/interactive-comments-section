@@ -11,7 +11,6 @@ function App() {
     <div className="App">
       <GlobalStyles />
       <Comments />
-
       <Footer />
     </div>
   );

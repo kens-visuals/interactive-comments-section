@@ -102,6 +102,7 @@ export const Button = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
+  padding: 1rem;
 `;
 
 export const ButtonIcon = styled.img`
@@ -109,7 +110,7 @@ export const ButtonIcon = styled.img`
 `;
 
 export const ButtonSpan = styled.span`
-  color: ${color.violet};
+  color: ${(props) => (props.delete ? color.red : color.violet)};
   font-size: 1.6rem;
   font-weight: ${(props) => (props.reply ? 800 : 500)};
 `;
@@ -123,6 +124,16 @@ export const ReplyButton = styled(Button)`
   &:hover {
     opacity: 0.5;
   }
+
+  @media (min-width: 810px) {
+    grid-column: 3 / -1;
+    grid-row: 1 / 2;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
 
   @media (min-width: 810px) {
     grid-column: 3 / -1;

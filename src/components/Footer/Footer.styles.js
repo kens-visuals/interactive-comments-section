@@ -15,13 +15,13 @@ export const FooterAttr = styled.footer`
 export const FooterLink = styled.a`
   &:link,
   &:visited {
-    color: ${color.red};
+    color: ${color.violet};
     font-weight: 900;
     text-transform: uppercase;
     transition: all 0.2s;
   }
   &:hover,
   &:active {
-    color: ${color.secondary};
+    color: ${color.violetLight};
   }
 `;
