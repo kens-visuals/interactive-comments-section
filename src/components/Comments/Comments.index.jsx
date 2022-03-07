@@ -1,63 +1,77 @@
-import { useState } from 'react';
-
-// components
-import Comment from 'components/Comment/Comment.index';
-import Input from 'components/Input/Input.index';
-
-// styles
-import * as C from './Comments.styles';
-
-// assests
-import DATA from 'assets/data.json';
-
 // components
 import Replies from '../Replies/Replies.index';
 import Reply from '../Reply/Reply.index';
 
-const Comments = () => {
-  const [comments, setComments] = useState(DATA.comments);
-  const [newComment, setNewComment] = useState('');
+// styles
+import * as C from './Comments.styles';
 
-  const commentsDisplay = comments.map((comment) => (
-    <Comment key={comment.id} {...comment} />
+// assets
+import iconPlus from 'assets/images/icon-plus.svg';
+import iconMinus from 'assets/images/icon-minus.svg';
+import iconReply from 'assets/images/icon-reply.svg';
+import iconEdit from 'assets/images/icon-edit.svg';
+import iconDelete from 'assets/images/icon-delete.svg';
+
+const Comment = ({
+  id,
+  content,
+  createdAt,
+  score,
+  user,
+  replyingTo,
+  replies,
+  calcScore,
+}) => {
+  const imgSrc = require(`../../assets/images/${user.image.png}`);
+
+  const repliesDisplay = replies.map((reply) => (
+    <Reply key={reply.id} {...reply} />
   ));
 
-  const addNewComment = (e) => setNewComment(e.target.value);
-
-  const sendNewComment = () => {
-    if (!newComment) return;
-
-    setComments((prevComments) => [
-      ...prevComments,
-      {
-        id: comments.length + 1,
-        content: newComment,
-        createdAt: '1 minute ago',
-        score: 0,
-        user: {
-          image: {
-            png: 'avatars/image-juliusomo.png',
-            webp: 'avatars/image-juliusomo.webp',
-          },
-          username: 'juliusomo',
-        },
-        replies: [],
-      },
-    ]);
-
-    setNewComment('');
-  };
-
   return (
-    <C.Comments>
-      {commentsDisplay}
-      <Input
-        value={newComment}
-        addNewComment={addNewComment}
-        sendNewComment={sendNewComment}
-      />
-    </C.Comments>
+    <>
+      <C.Container>
+        <C.CommentWrapper>
+          <C.UserImg src={imgSrc} />
+          <C.Username>{user.username}</C.Username>
+          {user.username === 'juliusomo' && <C.You>you</C.You>}
+          <C.PostedDate>{createdAt}</C.PostedDate>
+        </C.CommentWrapper>
+        <C.Text>
+          {replyingTo && <C.ButtonSpan reply>@{replyingTo}</C.ButtonSpan>}{' '}
+          {content}
+        </C.Text>
+        <C.ButtonBox>
+          <C.Button onClick={() => calcScore(id, true)}>
+            <C.ButtonIcon src={iconPlus} alt="plus" />
+          </C.Button>
+          <C.ButtonSpan>{score}</C.ButtonSpan>
+          <C.Button onClick={() => calcScore(id, false)}>
+            <C.ButtonIcon src={iconMinus} alt="minus" />
+          </C.Button>
+        </C.ButtonBox>
+        {user.username === 'juliusomo' ? (
+          <C.ButtonWrapper>
+            <C.ReplyButton>
+              <C.ButtonIcon src={iconDelete} alt="reply" />
+              <C.ButtonSpan delete>Delete</C.ButtonSpan>
+            </C.ReplyButton>
+            <C.ReplyButton>
+              <C.ButtonIcon src={iconEdit} alt="reply" reply />
+              <C.ButtonSpan reply>Edit</C.ButtonSpan>
+            </C.ReplyButton>
+          </C.ButtonWrapper>
+        ) : (
+          <C.ReplyButton>
+            <C.ButtonIcon src={iconReply} alt="reply" reply />
+            <C.ButtonSpan reply>Reply</C.ButtonSpan>
+          </C.ReplyButton>
+        )}
+      </C.Container>
+
+      {replies.length > 0 && <Replies>{repliesDisplay}</Replies>}
+    </>
   );
 };
 
-export default Comments;
+export default Comment;

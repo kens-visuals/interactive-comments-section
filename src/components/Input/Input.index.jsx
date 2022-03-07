@@ -1,6 +1,6 @@
 // styles
 import * as I from './Input.styles';
-import * as C from '../Comment/Comment.styles';
+import * as C from '../Comments/Comments.styles';
 
 // assets
 import currUser from 'assets/images/avatars/image-juliusomo.png';

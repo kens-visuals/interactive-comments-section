@@ -1,6 +1,6 @@
 // components
 import Footer from 'components/Footer/Footer.index';
-import Comments from 'components/Comments/Comments.index';
+import Comments from 'components/CommentsContainer/CommentsContainer.index';
 
 // styles
 import GlobalStyles from 'styles/Global.styles';

@@ -1,5 +1,5 @@
 // styles
-import * as C from '../Comment/Comment.styles';
+import * as C from '../Comments/Comments.styles';
 
 // assets
 import iconPlus from 'assets/images/icon-plus.svg';
